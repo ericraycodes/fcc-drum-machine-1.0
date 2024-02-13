@@ -1,35 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+/**
+ * The drum-pad data can be stored in a json file - an array of objects:
+ *    1. keys
+ *    2. name
+ *    3. sound
+ * 
+ * The drum pads are reusable components rendered with unique data.
+ * 
+ * @returns a react.js component that would build a drum machine app.
+ */
 
-function App() {
-  const [count, setCount] = useState(0)
+import Drumpad from "./Drumpad";
+
+export default function App() {
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <main id='drum-machine'>
+      <section id='display'></section>
+      <section>
+        <Drumpad />
+      </section>
+    </main>
+    {window.console.log('<App />')}
     </>
-  )
+  );
 }
-
-export default App

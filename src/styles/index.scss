@@ -1,0 +1,26 @@
+
+// partials
+@import 'app';
+@import 'drumpad';
+
+
+// initial rules
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+    width: 100vw;
+    height: 100vh;
+}
+#root {
+    width: 100%;
+    height: 100%;
+}
+#root {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
