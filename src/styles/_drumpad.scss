@@ -1,5 +1,6 @@
+$button-sq: 80px; 
 
 button {
-    width: 200px;
-    height: 100px;
+    width: $button-sq;
+    height: $button-sq;
 }

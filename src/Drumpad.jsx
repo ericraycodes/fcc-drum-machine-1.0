@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useRef } from "react";
 
 
-export default function Drumpad() {
+export default function Drumpad({ pad }) {
 
     // Reference for the button element.
     const buttonRef = useRef(null);
@@ -13,7 +13,7 @@ export default function Drumpad() {
 
     // Adding event listeners
     useEffect(() => {
-        window.console.log('\tbuttonRef:', buttonRef.current);
+        // window.console.log('\tbuttonRef:', buttonRef.current);
         buttonRef.current.addEventListener('mousedown', ondrumPadClick);
         window.console.log('\taddEventListeners <Drumpad />');
 
@@ -26,28 +26,30 @@ export default function Drumpad() {
 
     // Callback for playing embedded sound on button click.
     const ondrumPadClick = () => {
-        // The 'currentTime' property to 0 seconds make the audio reactively sound every click event.
+        // The 'currentTime' property to 0 seconds make the audio reactively sound again
+        // at the beginning of the sample at every click.
         audioRef.current.currentTime = 0;
         audioRef.current.play();
-        window.console.log('audioRef:', audioRef.current);
+        // window.console.log('audioRef:', audioRef.current);
     };
 
     return (
         <>
         <button
-            id={'heater-1'}
+            id={pad['id']}
             className='drum-pad'
             ref={buttonRef}
         >
-            <label for={'heater-1'} aria-label={'Heater 1.'}>{'Q'}</label>
+            <label for={pad['id']} aria-label={pad['name']}>{pad['key']}</label>
             <audio
-                id={'Q'}
+                id={pad['key']}
                 className='clip'
                 ref={audioRef}
-                src={'https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3'}
+                src={pad['sample']}
                 preload='auto'
             ></audio>
         </button>
+
         {window.console.log('<Drumpad />')}
         </>
     );

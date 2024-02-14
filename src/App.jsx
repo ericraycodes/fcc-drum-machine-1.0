@@ -1,27 +1,48 @@
-/**
- * The drum-pad data can be stored in a json file - an array of objects:
- *    1. keys
- *    2. name
- *    3. sound
- * 
- * The drum pads are reusable components rendered with unique data.
- * 
- * @returns a react.js component that would build a drum machine app.
- */
 
-import Drumpad from "./Drumpad";
+// Import statements
+import { useEffect, useState } from "react";
+import Drumkit from "./Drumkit";
+
+
+
 
 export default function App() {
+
+  // This will store the drum kit.
+  const blankKit = [{}];
+  const [drumKit, setDrumKit] = useState(blankKit);
+
+
+  // Fetches the drum kit data.
+  useEffect(() => {
+    window.console.log('\tuseEffect: <App/>');
+    fetchDrumKit().then(data => setDrumKit(data));
+  }, []);
+
 
   return (
     <>
     <main id='drum-machine'>
-      <section id='display'></section>
-      <section>
-        <Drumpad />
-      </section>
+      <Drumkit
+        kit={drumKit}
+      />
     </main>
+
     {window.console.log('<App />')}
     </>
   );
 }
+
+
+
+
+// Callback for fetching './drum-pads.json'.
+const fetchDrumKit = async () => {
+  window.console.log('\tfetching drum kit...');
+  return await fetch('./drum-pads.json').catch(err => window.console.log('fetch error:', err))
+    .then(res => res.json()).catch(err => window.console.log('json error:', err))
+    .then(data => {
+      window.console.log('\tdata:', typeof data, data);
+      return data;
+    }).catch(err => window.console.log('data error:', err));
+};

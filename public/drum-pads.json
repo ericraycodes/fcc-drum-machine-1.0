@@ -30,7 +30,7 @@
     "id"    : "clap"
   },
   {
-    "name"  : "Open-HH",
+    "name"  : "Open-Hi-Hat",
     "sample": "https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3",
     "key"   : "D",
     "id"    : "open-hh"
@@ -48,9 +48,9 @@
     "id"    : "kick"
   },
   {
-    "name"  : "Closed-HH",
+    "name"  : "Closed-Hi-Hat",
     "sample": "https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3",
     "key"   : "C",
     "id"    : "closed-hh"
-  },
+  }
 ]
