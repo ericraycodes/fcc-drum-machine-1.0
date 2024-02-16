@@ -1,6 +1,6 @@
 
 // Import statements
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Drumkit from "./Drumkit";
 
 
@@ -9,20 +9,45 @@ import Drumkit from "./Drumkit";
 export default function App() {
 
   // This will store the drum kit.
-  const blankKit = [{}];
-  const [drumKit, setDrumKit] = useState(blankKit);
+  const [drumKit, setDrumKit] = useState([{}]);
+  // Reference the #drum-machine.
+  const htmlRef = useRef(document.querySelector('html'));
 
 
-  // Fetches the drum kit data.
+  // Effect: fetches drum kit data.
   useEffect(() => {
     window.console.log('\tuseEffect: <App/>');
     fetchDrumKit().then(data => setDrumKit(data));
   }, []);
+  // Effect: adding keyboard event listener.
+  useEffect(() => {
+    htmlRef.current.addEventListener('keydown', onDrumKeyPress);
+    window.console.log('\taddEventListener: <main #drum-machine> node');
+    htmlRef.current.focus();
+    // cleanup function
+    return () => {
+      htmlRef.current.removeEventListener('keydown', onDrumKeyPress);
+      window.console.log('\tcleanup <App/>: removeEventListener')
+    };
+  }, []);
+
+
+  // Callback: handling 'keydown' keyboard user-event.
+  const onDrumKeyPress = (event) => {
+    window.console.log('\tonDrumKeyPress:', typeof event.key, event.key);
+    const eventKey = document.getElementById(event.key.toUpperCase());
+    window.console.log('\tkeyboard event audio:', eventKey);
+    eventKey.currentTime = 0;
+    eventKey.play();
+  };
 
 
   return (
     <>
-    <main id='drum-machine'>
+    <main
+      id='drum-machine'
+      tabIndex='1'
+    >
       <Drumkit
         kit={drumKit}
       />

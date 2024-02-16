@@ -11,10 +11,7 @@ export default function Drumkit({ kit }) {
 
     return (
         <>
-        <section>
-            {drumPads}
-        </section>
-
+        <section>{ drumPads }</section>
         {window.console.log('<Drumkit />')}
         </>
     );

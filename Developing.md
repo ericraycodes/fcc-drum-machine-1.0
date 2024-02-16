@@ -1,23 +1,25 @@
 # Developing the app
-#### Reactive drum pad embedded sound on user-event
+### 1. Reactive drum pad embedded sound on user-event
 The app used the HTMLMediaElement API and event listeners.
-#### Central drum pads data
-The *drum-pads.json* file is fetched to *React*.
+> The idea is to get a single drum pad component completely working first before reproducing a complete drum kit. This includes the functionality of a mouse click event and keyboard events.
 
+- Events: [keydown](https://developer.mozilla.org/en-US/docs/Web/API/Element/keydown_event),
+- [mousedown](https://developer.mozilla.org/en-US/docs/Web/API/Element/mousedown_event).
+- Remove event listeners: [reference](https://medium.com/@vk784_10031/how-to-remove-event-listeners-in-javascript-having-anonymous-functions-4ad47cf3befd)
 
+### 2. JSON: Central drum pads data
+The *drum-pads.json* file is fetched to *React*. This is used to store central app-drum-kit data.
 The data is then passed onto the iteratively rendered component.
+*How to manually create a JSON file?* See [MDN](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON).
 
 
-# JSON
-#### Drum machine data on JSON file
- - This is used to center information and for reactive render.
-#### How to create a JSON file manually.
- [MDN](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON) reference.
+
 
 # HTMLMediaElement API
-  This is used to manipulate the `<audio />` element's playback controls.
+  This is used to manipulate the `<audio />` element's playback.
   The `currentTime` property and `play()` method is used for a reactive sound response on click.
 
+
 # addEventListener or inline onClick?
-  [stackoverflow 1](https://stackoverflow.com/questions/26008243/is-it-more-efficient-to-use-addeventlistener-or-onclick-for-performance)
-  [stackoverflow 2](https://stackoverflow.com/questions/6348494/addeventlistener-vs-onclick)
+  - [stackoverflow 1](https://stackoverflow.com/questions/26008243/is-it-more-efficient-to-use-addeventlistener-or-onclick-for-performance)
+  - [stackoverflow 2](https://stackoverflow.com/questions/6348494/addeventlistener-vs-onclick)
