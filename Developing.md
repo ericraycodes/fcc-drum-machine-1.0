@@ -3,12 +3,16 @@
 The app used the HTMLMediaElement API and event listeners.
 > The idea is to get a single drum pad component completely working first before reproducing a complete drum kit. This includes the functionality of a mouse click event and keyboard events.
 
+The keyboard user-events are done with event delegation.
+The mouse event is attached on every `<button/>`. My attempt on event delegation on this had the drum pads not responsive - not good UX for me. The little to more code and performance overhead cannot be helped.
 - Event delegation: freeCodeCamp [article](https://www.freecodecamp.org/news/event-delegation-javascript/)
 - Best places to attach event listeners: [stackoverflow](https://stackoverflow.com/questions/26104525/best-practices-for-where-to-add-event-listeners)
 - Events:
   - [keydown](https://developer.mozilla.org/en-US/docs/Web/API/Element/keydown_event),
   - [mousedown](https://developer.mozilla.org/en-US/docs/Web/API/Element/mousedown_event).
 - Remove event listeners: [reference](https://medium.com/@vk784_10031/how-to-remove-event-listeners-in-javascript-having-anonymous-functions-4ad47cf3befd)
+
+The HTML5 `<audio/>` is used for project specification. However, an article below for future reference:
 - Web Audio API over HTML5 `<audio/>`:
   - [stackoverflow](https://stackoverflow.com/questions/20657252/delays-when-seeking-with-html5-audio-currenttime)
   -[MDN](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)

@@ -24,7 +24,8 @@ export default function Drumpad({ pad }) {
 
 
     // Callback for playing embedded sound on button click.
-    const onDrumButtonClick = () => {
+    const onDrumButtonClick = (event) => {
+        window.console.log('onDrumButtonClick', event);
         // The 'currentTime' property to 0 seconds make the audio reactively sound again
         // at the beginning of the sample at every click.
         audioRef.current.currentTime = 0;
@@ -35,20 +36,22 @@ export default function Drumpad({ pad }) {
 
     return (
         <>
-        <button
-            id={pad['id']}
-            className='drum-pad'
-            ref={buttonRef}
-        >
-            <label htmlFor={pad['id']} aria-label={pad['name']}>{pad['key']}</label>
-            <audio
-                id={pad['key']}
-                className='clip'
-                ref={audioRef}
-                src={pad['sample']}
-                preload='auto'
-            ></audio>
-        </button>
+        <label htmlFor={pad['id']} aria-label={pad['name']}>
+            <button
+                id={pad['id']}
+                className='drum-pad'
+                ref={buttonRef}
+            >
+                {pad['key']}
+                <audio
+                    id={pad['key']}
+                    className='clip'
+                    ref={audioRef}
+                    src={pad['sample']}
+                    preload='auto'
+                ></audio>
+            </button>
+        </label>
 
         {window.console.log('<Drumpad/> :', pad['key'], pad['name'])}
         </>
