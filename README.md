@@ -1,3 +1,8 @@
+# Documentation
+Each commit has corresponding documentation: source codes and markdowns.
+
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

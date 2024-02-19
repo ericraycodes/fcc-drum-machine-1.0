@@ -3,14 +3,22 @@
 The app used the HTMLMediaElement API and event listeners.
 > The idea is to get a single drum pad component completely working first before reproducing a complete drum kit. This includes the functionality of a mouse click event and keyboard events.
 
-- Events: [keydown](https://developer.mozilla.org/en-US/docs/Web/API/Element/keydown_event),
-- [mousedown](https://developer.mozilla.org/en-US/docs/Web/API/Element/mousedown_event).
+- Event delegation: freeCodeCamp [article](https://www.freecodecamp.org/news/event-delegation-javascript/)
+- Best places to attach event listeners: [stackoverflow](https://stackoverflow.com/questions/26104525/best-practices-for-where-to-add-event-listeners)
+- Events:
+  - [keydown](https://developer.mozilla.org/en-US/docs/Web/API/Element/keydown_event),
+  - [mousedown](https://developer.mozilla.org/en-US/docs/Web/API/Element/mousedown_event).
 - Remove event listeners: [reference](https://medium.com/@vk784_10031/how-to-remove-event-listeners-in-javascript-having-anonymous-functions-4ad47cf3befd)
+- Web Audio API over HTML5 `<audio/>`:
+  - [stackoverflow](https://stackoverflow.com/questions/20657252/delays-when-seeking-with-html5-audio-currenttime)
+  -[MDN](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)
 
 ### 2. JSON: Central drum pads data
 The *drum-pads.json* file is fetched to *React*. This is used to store central app-drum-kit data.
 The data is then passed onto the iteratively rendered component.
 *How to manually create a JSON file?* See [MDN](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON).
+
+### 3. Display functionality
 
 
 

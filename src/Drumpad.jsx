@@ -11,26 +11,26 @@ export default function Drumpad({ pad }) {
     const audioRef = useRef(null);
 
 
-    // Adding mouse event listener to <button />.
-    useEffect(() => {
-        buttonRef.current.addEventListener('mousedown', onDrumButtonClick);
-        window.console.log('\taddEventListeners <Drumpad/>');
-        // cleanup function
-        return () => {
-            buttonRef.current.removeEventListener('mousedown',onDrumButtonClick);
-            window.console.log('\tcleanup <Drumpad/> : removeEventListener');
-        };
-    }, []);
+    // // Adding mouse event listener to <button />.
+    // useEffect(() => {
+    //     buttonRef.current.addEventListener('mousedown', onDrumButtonClick );
+    //     window.console.log('\taddEventListeners <Drumpad/>');
+    //     // cleanup function
+    //     return () => {
+    //         buttonRef.current.removeEventListener('mousedown',onDrumButtonClick);
+    //         window.console.log('\tcleanup <Drumpad/> : removeEventListener');
+    //     };
+    // }, []);
 
 
-    // Callback for playing embedded sound on button click.
-    const onDrumButtonClick = () => {
-        // The 'currentTime' property to 0 seconds make the audio reactively sound again
-        // at the beginning of the sample at every click.
-        audioRef.current.currentTime = 0;
-        audioRef.current.play();
-        // window.console.log('audioRef:', audioRef.current);
-    };
+    // // Callback for playing embedded sound on button click.
+    // const onDrumButtonClick = () => {
+    //     // The 'currentTime' property to 0 seconds make the audio reactively sound again
+    //     // at the beginning of the sample at every click.
+    //     audioRef.current.currentTime = 0;
+    //     audioRef.current.play();
+    //     // window.console.log('audioRef:', audioRef.current);
+    // };
 
 
     return (
@@ -50,7 +50,7 @@ export default function Drumpad({ pad }) {
             ></audio>
         </button>
 
-        {window.console.log('<Drumpad />')}
+        {window.console.log('<Drumpad/> :', pad['key'], pad['name'])}
         </>
     );
 }
