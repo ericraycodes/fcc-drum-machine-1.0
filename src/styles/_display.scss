@@ -1,0 +1,13 @@
+
+#display {
+	// temporary dev only
+	border: 1px solid green;
+	width: 200px;
+	height: 40px;
+}
+#display {
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+}

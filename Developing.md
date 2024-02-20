@@ -30,6 +30,7 @@ The data is then passed onto the iteratively rendered component.
 # HTMLMediaElement API
   This is used to manipulate the `<audio />` element's playback.
   The `currentTime` property and `play()` method is used for a reactive sound response on click.
+  The `loadstart` is used for 
 
 
 # addEventListener or inline onClick?

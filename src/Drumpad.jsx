@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useRef } from "react";
 
 
-export default function Drumpad({ pad }) {
+export default function Drumpad({ pad, identifyDrumPad }) {
 
     // Reference for the button element.
     const buttonRef = useRef(null);
@@ -14,29 +14,26 @@ export default function Drumpad({ pad }) {
     // Adding mouse event listener to <button />.
     useEffect(() => {
         buttonRef.current.addEventListener('mousedown', onDrumButtonClick );
-        window.console.log('\taddEventListeners <Drumpad/>');
         // cleanup function
         return () => {
             buttonRef.current.removeEventListener('mousedown',onDrumButtonClick);
-            window.console.log('\tcleanup <Drumpad/> : removeEventListener');
         };
     }, []);
 
 
     // Callback for playing embedded sound on button click.
     const onDrumButtonClick = (event) => {
-        window.console.log('onDrumButtonClick', event);
         // The 'currentTime' property to 0 seconds make the audio reactively sound again
         // at the beginning of the sample at every click.
         audioRef.current.currentTime = 0;
         audioRef.current.play();
-        // window.console.log('audioRef:', audioRef.current);
+        identifyDrumPad(pad['key']);
+        window.console.log('>> USER:', event, event.target);
     };
 
 
     return (
         <>
-        <label htmlFor={pad['id']} aria-label={pad['name']}>
             <button
                 id={pad['id']}
                 className='drum-pad'
@@ -51,9 +48,6 @@ export default function Drumpad({ pad }) {
                     preload='auto'
                 ></audio>
             </button>
-        </label>
-
-        {window.console.log('<Drumpad/> :', pad['key'], pad['name'])}
         </>
     );
 }

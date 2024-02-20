@@ -1,7 +1,8 @@
 
-// Import statements
-import { useEffect, useState, useRef } from "react";
+
+import { useEffect, useState } from "react";
 import Drumkit from "./Drumkit";
+import Display from "./Display";
 
 
 
@@ -9,36 +10,21 @@ import Drumkit from "./Drumkit";
 export default function App() {
 
   // This will store the drum kit.
-  const [drumKit, setDrumKit] = useState([{}]);
-  // Reference the #drum-machine.
-  const htmlRef = useRef(document.querySelector('html'));
+  const [drumKit, setDrumKit] = useState([]);
+  // This will store which display content.
+  const [hitKey, setHitKey] = useState('');
 
 
   // Effect: fetches drum kit data.
   useEffect(() => {
-    window.console.log('\tuseEffect: <App/>');
     fetchDrumKit().then(data => setDrumKit(data));
   }, []);
-  // Effect: adding keyboard event listener.
-  useEffect(() => {
-    htmlRef.current.addEventListener('keydown', onDrumKeyPress);
-    window.console.log('\taddEventListener: <main #drum-machine> node');
-    htmlRef.current.focus();
-    // cleanup function
-    return () => {
-      htmlRef.current.removeEventListener('keydown', onDrumKeyPress);
-      window.console.log('\tcleanup <App/>: removeEventListener')
-    };
-  }, []);
+ 
 
-
-  // Callback: handling 'keydown' keyboard user-event.
-  const onDrumKeyPress = (event) => {
-    window.console.log('\tonDrumKeyPress:', typeof event.key, event.key);
-    const eventKey = document.getElementById(event.key.toUpperCase());
-    window.console.log('\tkeyboard event audio:', eventKey);
-    eventKey.currentTime = 0;
-    eventKey.play();
+  // Function handling which drum-pad plays.
+  const identifyDrumPad = (key) => {
+    setHitKey(key);
+    window.console.log('\tupdate display:', data);
   };
 
 
@@ -50,10 +36,14 @@ export default function App() {
     >
       <Drumkit
         kit={drumKit}
+        identifyDrumPad={identifyDrumPad}
+      />
+      <Display
+        drumKit={drumKit}
+        hitKey={hitKey}
       />
     </main>
-
-    {window.console.log('<App />')}
+    { window.console.count('<App /> RENDER') }
     </>
   );
 }
