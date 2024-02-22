@@ -15,7 +15,7 @@ The mouse event is attached on every `<button/>`. My attempt on event delegation
 The HTML5 `<audio/>` is used for project specification. However, an article below for future reference:
 - Web Audio API over HTML5 `<audio/>`:
   - [stackoverflow](https://stackoverflow.com/questions/20657252/delays-when-seeking-with-html5-audio-currenttime)
-  -[MDN](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)
+  - [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)
 
 ### 2. JSON: Central drum pads data
 The *drum-pads.json* file is fetched to *React*. This is used to store central app-drum-kit data.
@@ -24,13 +24,18 @@ The data is then passed onto the iteratively rendered component.
 
 ### 3. Display functionality
 
+### 4. Performance
+Using **memo** to avoid child component re-render when parent re-renders. [Reference](https://medium.com/@akashshukla_1715/preventing-unnecessary-rerendering-of-child-components-in-react-using-usecallback-and-react-memo-34f1423fe263)
+This is important when not all changes in the *parent component* is needed by every *child component*.
+
+
 
 
 
 # HTMLMediaElement API
   This is used to manipulate the `<audio />` element's playback.
   The `currentTime` property and `play()` method is used for a reactive sound response on click.
-  The `loadstart` is used for 
+  The `loadstart` is used for
 
 
 # addEventListener or inline onClick?

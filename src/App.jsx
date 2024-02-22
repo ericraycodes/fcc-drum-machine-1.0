@@ -1,6 +1,6 @@
 
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Drumkit from "./Drumkit";
 import Display from "./Display";
 
@@ -24,19 +24,18 @@ export default function App() {
   // Function handling which drum-pad plays.
   const identifyDrumPad = (key) => {
     setHitKey(key);
-    window.console.log('\tupdate display:', data);
   };
+  const ucIdentifyDrumPad = useCallback(identifyDrumPad, []);
 
 
   return (
     <>
     <main
       id='drum-machine'
-      tabIndex='1'
     >
       <Drumkit
         kit={drumKit}
-        identifyDrumPad={identifyDrumPad}
+        identifyDrumPad={ucIdentifyDrumPad}
       />
       <Display
         drumKit={drumKit}

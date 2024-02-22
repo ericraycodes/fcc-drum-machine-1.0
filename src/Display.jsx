@@ -9,9 +9,14 @@ export default function Display({ drumKit, hitKey }) {
 
     return (
         <>
-        <section id='display'>
+        <div
+            id='display'
+            role='figure'
+            aria-live='true'
+        >
             <p>{ keyName[0] }</p>
-        </section>
+        </div>
+        { window.console.count('<Display/>')}
         </>
     );
 }

@@ -1,9 +1,10 @@
 
+import React from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
 
 
-export default function Drumpad({ pad, identifyDrumPad }) {
+function Drumpad({ pad, onKeyEvent }) {
 
     // Reference for the button element.
     const buttonRef = useRef(null);
@@ -13,8 +14,7 @@ export default function Drumpad({ pad, identifyDrumPad }) {
 
     // Adding mouse event listener to <button />.
     useEffect(() => {
-        buttonRef.current.addEventListener('mousedown', onDrumButtonClick );
-        // cleanup function
+        buttonRef.current.addEventListener('mousedown', onDrumButtonClick);
         return () => {
             buttonRef.current.removeEventListener('mousedown',onDrumButtonClick);
         };
@@ -23,12 +23,7 @@ export default function Drumpad({ pad, identifyDrumPad }) {
 
     // Callback for playing embedded sound on button click.
     const onDrumButtonClick = (event) => {
-        // The 'currentTime' property to 0 seconds make the audio reactively sound again
-        // at the beginning of the sample at every click.
-        audioRef.current.currentTime = 0;
-        audioRef.current.play();
-        identifyDrumPad(pad['key']);
-        window.console.log('>> USER:', event, event.target);
+        onKeyEvent(audioRef.current, pad['key'], event);
     };
 
 
@@ -48,6 +43,10 @@ export default function Drumpad({ pad, identifyDrumPad }) {
                     preload='auto'
                 ></audio>
             </button>
+            { window.console.count('<Drumpad/>') }
         </>
     );
 }
+
+
+export default React.memo(Drumpad);

@@ -1,11 +1,14 @@
 
-import { useEffect, useRef } from "react";
+import React from "react";
+import { useRef, useEffect, useCallback } from "react";
 import Drumpad from "./Drumpad";
 
-export default function Drumkit({ kit, identifyDrumPad }) {
+export default React.memo( function Drumkit({ kit, identifyDrumPad }) {
 
     // Reference the document.
     const htmlRef = useRef(document.querySelector('html'));
+    // Reference the audio element triggered with event.
+    const audioRef = useRef(null);
 
 
     // Effect: adding keyboard event listener.
@@ -22,21 +25,27 @@ export default function Drumkit({ kit, identifyDrumPad }) {
     // Callback: handling 'keydown' keyboard user-event.
     const onDrumKeyPress = (event) => {
         const eventKey = event.key.toUpperCase();
-        const audioElement = document.getElementById(eventKey);
-        audioElement.currentTime = 0;
-        audioElement.play();
-        identifyDrumPad(eventKey);
-        window.console.log('>> USER:', event);
+        audioRef.current = document.getElementById(eventKey);
+        onKeyEvent(audioRef.current, eventKey, event);
     };
+    // Function: For every key event (keyboard & mouse). Param: key, audio, EVENT
+    const onKeyEvent = (audio, key, event) => {
+        audio.currentTime = 0;
+        audio.play();
+        identifyDrumPad(key);
+        window.console.log('>> USER', event);
+    };
+    const ucOnKeyEvent = useCallback(onKeyEvent, []);
 
 
     // Iterative rendering
-    const drumPads = kit.map(obj => <Drumpad pad={obj} identifyDrumPad={identifyDrumPad}/>);
+    const drumPads = kit.map(obj => <li key={obj['id']}><Drumpad pad={obj} onKeyEvent={ucOnKeyEvent}/></li>);
 
 
     return (
         <>
-            <section>{ drumPads }</section>
+            <ul>{ drumPads }</ul>
+            { window.console.count('<Drumkit/>') }
         </>
     );
-}
+})
