@@ -29,7 +29,7 @@ Using **React.memo** and **useCallback** to avoid child component re-render when
 This is important when not all changes in the *parent component* is needed by every *child component*.
 
 ### 5. Styling
-CSS Grid: (learncssgrid.com)[https://learncssgrid.com/]
+CSS Grid: [learncssgrid.com](https://learncssgrid.com/)
 
 
 

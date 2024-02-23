@@ -5,6 +5,7 @@ import Drumpad from "./Drumpad";
 
 export default React.memo( function Drumkit({ kit, identifyDrumPad }) {
 
+
     // Reference the document.
     const htmlRef = useRef(document.querySelector('html'));
     // Reference the audio element triggered with event.
@@ -36,13 +37,12 @@ export default React.memo( function Drumkit({ kit, identifyDrumPad }) {
         window.console.log('>> USER keyup', event);
         audioRef.current.parentElement.classList.remove('clicked');
     };
-    // Function: For every key event (keyboard & mouse). Param: key, audio, EVENT
+    // Function: For every key event (keypress & click).
     const onKeyEvent = (audio, key, event) => {
         audio.currentTime = 0;
         audio.play();
         identifyDrumPad(key);
-        window.console.count('>> USER keydown', event);
-        window.console.log(event);
+        window.console.log('>> USER keydown', event);
     };
     const ucOnKeyEvent = useCallback(onKeyEvent, []);
 

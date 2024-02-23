@@ -61,3 +61,52 @@
 	git remote add origin https://github.con/{USER-NAME}/{REPO-NAME}.git
 	git branch -M master
 	git push -u origin master
+
+
+
+# Deploy to GitHub pages with Vite config
+Full [reference](https://medium.com/@aishwaryaparab1/deploying-vite-deploying-vite-app-to-github-pages-166fff40ffd3).
+
+1. Complete the web app's **development**.
+
+1. **Preview** the build-output locally. Proceed to deploy when it runs to requirement.
+
+1. **Deploy**. The project's github repository is needed.
+
+- **Install** [gh-pages](https://www.npmjs.com/package/gh-pages) as devDependency. Run this on the terminal:
+	```
+	# devDependency
+	npm i --save-dev gh-pages
+	```
+
+- **Update** *vite.config.js* file.  Add a base-URL (repo-name) as property-value within the **defineConfig({})**:
+	```
+	base: "/{repo-name}/"
+	```
+
+- **Update** *package.json* file with a *"homepage"* property:
+	```
+	"homepage": "https://{user-name}/github.io/{repo-name}/"
+	```
+
+- **Add** these two *"script"* properties in the *package.json* file. The *'dist'* in the *"deploy"* property-value is the build-output folder:
+	```
+	"scripts": {
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d dist",
+		...
+	}
+	```
+
+- **Deploy** the app. Run this on the terminal:
+	```
+	npm run deploy
+	```
+
+- **Configure** your project's remote GitHub repository: 
+	- Go to **Settings**.
+	- Go to **Pages**.
+	- Under **Build and deployment**:
+		- set the **Source** to *Deploy from a branch*
+		- set the **Branch** to *gh-pages* and */(root)*
+	- Click **Save**.
