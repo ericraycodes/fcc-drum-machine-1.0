@@ -1,0 +1,38 @@
+
+
+// dimension
+section {
+	width: auto;
+}
+
+// display
+section {
+	justify-self: center;
+	align-self: baseline;
+}
+section {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+// box
+section {
+	margin-top: 20px;
+}
+
+// typography
+section {
+	p{
+		font-family: 'Courier New', Courier, monospace;
+		font-size: 0.7rem;
+		line-height: 1.5;
+		color: silver;
+	}
+}
+// link
+a {
+	list-style: none;
+	color: silver;
+}

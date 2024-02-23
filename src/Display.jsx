@@ -16,7 +16,6 @@ export default function Display({ drumKit, hitKey }) {
         >
             <p>{ keyName[0] }</p>
         </div>
-        { window.console.count('<Display/>')}
         </>
     );
 }

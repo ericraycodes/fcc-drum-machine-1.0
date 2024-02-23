@@ -13,27 +13,36 @@ export default React.memo( function Drumkit({ kit, identifyDrumPad }) {
 
     // Effect: adding keyboard event listener.
     useEffect(() => {
-        htmlRef.current.addEventListener('keydown', onDrumKeyPress);
         htmlRef.current.focus();
+        htmlRef.current.addEventListener('keydown', onKeydown);
+        htmlRef.current.addEventListener('keyup', onKeyup)
         // cleanup function
         return () => {
-            htmlRef.current.removeEventListener('keydown', onDrumKeyPress);
+            htmlRef.current.removeEventListener('keydown', onKeydown);
+            htmlRef.current.removeEventListener('keyup', onKeyup);
         };
     }, []);
 
 
     // Callback: handling 'keydown' keyboard user-event.
-    const onDrumKeyPress = (event) => {
+    const onKeydown = (event) => {
         const eventKey = event.key.toUpperCase();
         audioRef.current = document.getElementById(eventKey);
+        audioRef.current.parentElement.classList.add('clicked');
         onKeyEvent(audioRef.current, eventKey, event);
+    };
+    // Callback: handling 'keyup' user event.
+    const onKeyup = (event) => {
+        window.console.log('>> USER keyup', event);
+        audioRef.current.parentElement.classList.remove('clicked');
     };
     // Function: For every key event (keyboard & mouse). Param: key, audio, EVENT
     const onKeyEvent = (audio, key, event) => {
         audio.currentTime = 0;
         audio.play();
         identifyDrumPad(key);
-        window.console.log('>> USER', event);
+        window.console.count('>> USER keydown', event);
+        window.console.log(event);
     };
     const ucOnKeyEvent = useCallback(onKeyEvent, []);
 

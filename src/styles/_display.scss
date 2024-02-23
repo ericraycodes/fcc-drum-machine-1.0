@@ -1,13 +1,38 @@
 
+
+//  dimension
 #display {
-	// temporary dev only
-	border: 1px solid green;
-	width: 200px;
-	height: 40px;
+	// width: 200px;
+	width: 100%;
+	height: 70px;
+}
+
+// display
+#display {
+	justify-self: center;
+	align-self: end;
 }
 #display {
 	display: flex;
 	flex-flow: column;
 	justify-content: center;
 	align-items: center;
+}
+
+// color
+#display {
+	background-color: #BFEA7C;
+
+	// typography
+	p {
+		font-family: 'Seven Segment', sans-serif;
+		font-size: x-large;
+		color: #12372A;
+	}
+}
+
+// box
+#display {
+	border: 2px solid gray;
+	margin-bottom: 20px;
 }

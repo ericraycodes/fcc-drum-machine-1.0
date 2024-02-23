@@ -1,6 +1,23 @@
-$button-sq: 80px; 
 
+
+//  dimension
+li {
+    width: 100%;
+    height: 100%;
+}
 button {
-    width: $button-sq;
-    height: $button-sq;
+    width: 100%;
+    height: 100%;
+}
+
+// border
+li, button {
+    border-radius: 5px;
+}
+
+// hover
+button:hover,
+.clicked {
+    background-color: #7077A1;
+    cursor: pointer;
 }

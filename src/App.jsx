@@ -3,6 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import Drumkit from "./Drumkit";
 import Display from "./Display";
+import Sticker from "./Sticker";
 
 
 
@@ -41,8 +42,8 @@ export default function App() {
         drumKit={drumKit}
         hitKey={hitKey}
       />
+      <Sticker/>
     </main>
-    { window.console.count('<App /> RENDER') }
     </>
   );
 }

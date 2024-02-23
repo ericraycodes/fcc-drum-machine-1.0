@@ -1,8 +1,23 @@
 
-
+// list-style
 ul {
 	list-style: none;
 }
+
+// dimension
 ul {
-	display: flex;
+	height: 80%;
+}
+
+// display
+ul {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+}
+li {
+
 }

@@ -1,10 +1,44 @@
 
 
+// dimension
 main {
 	min-width: 320px;
 	width: 670px;
 	min-height: 240px;
 	height: 380px;
+}
 
-	border: 1px solid gray;
+// display
+main {
+	display: grid;
+	grid-template-columns: 5fr 3fr;
+	grid-template-rows: 1fr 1fr;
+	grid-template-areas: "drumkit display" "drumkit sticker";
+	gap: 20px;
+	align-items: center;
+}
+ul {
+	grid-area: drumkit;
+}
+div {
+	grid-area: display;
+}
+section {
+	grid-area: sticker;
+}
+
+// box
+main {
+	padding: 20px;
+}
+
+// border-layout
+main {
+	border-radius: 10px;
+}
+
+// color
+main {
+	background-color: #2D3250;
+	border: 5px solid #424769;
 }

@@ -25,9 +25,11 @@ The data is then passed onto the iteratively rendered component.
 ### 3. Display functionality
 
 ### 4. Performance
-Using **memo** to avoid child component re-render when parent re-renders. [Reference](https://medium.com/@akashshukla_1715/preventing-unnecessary-rerendering-of-child-components-in-react-using-usecallback-and-react-memo-34f1423fe263)
+Using **React.memo** and **useCallback** to avoid child component re-render when parent re-renders. [Reference](https://medium.com/@akashshukla_1715/preventing-unnecessary-rerendering-of-child-components-in-react-using-usecallback-and-react-memo-34f1423fe263)
 This is important when not all changes in the *parent component* is needed by every *child component*.
 
+### 5. Styling
+CSS Grid: (learncssgrid.com)[https://learncssgrid.com/]
 
 
 
